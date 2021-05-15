@@ -29,8 +29,9 @@ router.post('/', function(req, res) {
   res.render('index', {title: 'Covid Tips', posts: values})
 })
 
-router.get('/api/data', () => {
-  res.send(db.get('posts', []).value())
+router.get('/api/post', (req, res) => {
+  res.set('Content-Type', 'application/json');
+  res.json(db.get('posts', []).value())
 })
 
 module.exports = router;
